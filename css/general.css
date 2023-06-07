@@ -1,0 +1,308 @@
+/*
+--- 01 typography system
+
+-font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 /24 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- font weight 
+default: 400, 500, 600, 700
+
+- spacing system
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 120 
+
+--- 02 colors
+
+-primary: #e67e22
+-tints: #fdf2e9 #fae5d3
+-shades: #cf711f
+-accents:
+-grey: #555 #333
+
+--- 03 shadows
+
+--- 04 border radius
+
+--- 05 whitespace
+
+
+*/
+
+/* use rem units and max-width for elements that needs to be fluid for responsiveness */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* set 1rem = 10px */
+
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    line-height: 1;
+    color: #555;
+    font-weight: 400;
+
+    /* to avoid horizontal scroll, only works if theres nothing
+    absolutely positioned in relation to body  */
+    overflow-x: hidden;
+}
+
+
+/************************/
+   /* general reusable components */
+/************************/
+
+/* reusable grid */
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+
+    padding: 0 3.2rem;
+}
+
+
+
+.grid {
+    display: grid;
+    row-gap: 9.6rem;
+    column-gap: 4.8rem;
+
+    /* margin-bottom: 9.6rem; */
+
+}
+
+/* this and the margin-bottom comment up can be used 
+instead of the not too */
+/* .grid:last-child {
+    margin-bottom: 0;
+} */
+
+.grid:not(:last-child) {
+    /* to acheive multiple reusable 
+    grid inside a grid... this margin bottom 
+    for example applies only to grids inside the main grid */
+    margin-bottom: 9.6rem;
+
+}
+
+.grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center-v {
+    /* to align items vertically in grid 
+    creating this makes main grid more reusable */
+    align-items: center;
+
+}
+
+strong {
+    font-weight: 500;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tetiary {
+    font-weight: 700;
+    
+    color: #333;
+    letter-spacing: -0.5px;
+   
+   }
+
+ .heading-primary {
+    font-size: 5.2rem;
+    line-height: 1.05;
+
+    margin-bottom: 3.2rem;
+
+   }
+
+.heading-secondary {
+    font-size: 4rem;
+    line-height: 1.2;
+
+}
+
+.heading-secondary-mb {
+    margin-bottom: 9.6rem;
+}
+
+.subheading {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #cf711f;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+
+    margin-bottom: 1.6rem;
+}
+
+.heading-tetiary {
+   font-size: 2.8rem;
+   font-weight: 700;
+   line-height: 1.2;
+   margin-bottom: 3.2rem;
+}
+
+
+.btn,
+.btn:link, 
+.btn:visited {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 600;
+    
+    text-decoration: none;
+    padding: 1.6rem 3.2rem;
+    border-radius: 9px;
+
+    /* only necessary for .btn(class in form btn) */
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+
+
+    /* put transition on original state not hover */
+    transition: all 0.5s;
+}
+
+.btn-cta:link, 
+.btn-cta:visited {
+    background-color: #e67e22;
+    color: #fff;
+
+    
+} 
+
+.btn-cta:hover, 
+.btn-cta:active {
+    background-color: #cf711f;
+    
+
+} 
+
+.btn-learn-more:link, 
+.btn-learn-more:visited {
+  background-color: #fff;
+  color: #555;
+}
+
+.btn-learn-more:hover, 
+.btn-learn-more:active {
+    background-color:#fae5d3 ;
+  color: #555;
+
+  /* trick to add border inside the btn instead of using border which wont work as desired */
+  box-shadow: inset 0 0 0 3px #333;
+}
+
+.btn--form {
+    /* to make form btn reusable */
+    color: #fae5d3;
+    background-color: #45260a;
+
+    /* to make btn align with other input field */
+    align-self: end;
+    padding: 1.2rem;
+
+}
+
+.btn--form:hover {
+    color: #45260a;
+    background-color: #fae5d3;
+}
+
+.link:link,
+.link:visited {
+    display: inline-block;
+    color: #e67e22;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: all 0.3s;
+}
+
+.link:hover,
+.link:active {
+    color: #cf711f;
+    /* to remove border bottom on hover */
+    border-bottom: 1px solid transparent;
+}
+
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.list-item {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    line-height: 1.2;
+}
+
+.list-icon {
+    height: 3rem;
+    width: 3rem;
+    color: #e67e22;
+}
+
+
+*:focus { 
+    /* global reset for focus state; */
+    outline: none;
+
+    /* majorly for accesibility */
+    /* outline: 4px dotted red;
+    offset: 8px; */
+
+    /* this can be used instead of offset and outline 4px */
+    box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+
+}
+
+/****** helper classes ******/
+
+.margin-right {
+
+    /* reusable margin right class can be used in several elements that needs this property */
+    margin-right: 1.6rem;
+
+}
+
+.heading-secondary-meals {
+    margin-bottom: 6.4rem !important;
+}
+
+.margin-bottom-ms {
+    /* reusable margin bottom meal section */
+    margin-bottom: 4.8rem !important;
+}
+
+.center-text {
+    text-align: center;
+}
