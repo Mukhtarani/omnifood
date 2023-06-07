@@ -1,2 +1,2 @@
 # omnifood
-an AI based health food delivery webpage
+an AI based healthy food delivery webpage
